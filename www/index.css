@@ -1,0 +1,13 @@
+#header, #content, #footer{
+    width: 1000px;
+    margin: auto;
+}
+#msgdisplay{
+    width: 800px;
+    height: 200px;
+    border: 1px solid black;
+}
+label{
+    float: left;
+    width: 4em;
+}
