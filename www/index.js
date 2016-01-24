@@ -40,4 +40,13 @@
         "msg" : ""
     };
     ajax.send(JSON.stringify(content));
+    setInterval(function(){
+        ajax.open("post", "chat", true);
+        var content = {
+            "user" : user.value,
+            "msg" : ""
+        };
+        ajax.send(JSON.stringify(content));
+        console.log("5s");
+    },5000);
 })();
