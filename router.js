@@ -11,6 +11,11 @@ var route = function(pathname, handle, response, postData){
                 response.writeHead(200);
                 fs.createReadStream("./www" + pathname).pipe(response);
             }else if(stats.isDirectory()){
+                if(pathname[pathname.length-1] != "/"){
+                    response.writeHead(302,{"Location" : "http://localhost:8080"+pathname+"/"});
+                    response.end();
+                    return;
+                }
                 fs.stat("./www"+pathname+"/index.html", function(err,stats){
                     if(stats.isFile()){
                         response.writeHead(200);

@@ -42,4 +42,4 @@ function chat(response, postData){
 
 exports["/"] = start;
 exports["start"] = start;
-exports["/chat"] = chat;
+exports["/chatroom/chat"] = chat;

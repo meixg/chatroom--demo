@@ -5,6 +5,7 @@ var start = function(route, handle){
     http.createServer(function(request, response){
         var pathname = url.parse(request.url).pathname;
         request.setEncoding("utf8");
+        console.log("receive request for "+pathname);
         if(request.method == "POST"){
             var postData = "";
             request.addListener("data", function(postDataChunk){

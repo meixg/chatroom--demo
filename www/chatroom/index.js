@@ -25,6 +25,10 @@
     };
     form.addEventListener("submit",function(e){
         e.preventDefault();
+        if(msg.value.length >49){
+            alert("输入的信息不应大于50个字符！");
+            return;
+        }
         ajax.open("post", "chat", true);
         var content = {
             "user" : user.value,
