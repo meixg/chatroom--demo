@@ -5,9 +5,10 @@ var route = function(pathname, handle, response, postData){
     }else{
         fs.stat("./www" + pathname,function(err, stats){
             if(err){
-                response.writeHead(200);
+                response.writeHead(404);
                 response.write("404 Page Not Found");
                 response.end();
+                console.log(err);
                 return;
             }
             if(stats.isFile()){
@@ -21,24 +22,17 @@ var route = function(pathname, handle, response, postData){
                 }
                 fs.stat("./www"+pathname+"/index.html", function(err,stats){
                     if(err){
-                        response.writeHead(200);
+                        response.writeHead(404);
                         response.write("404 Page Not Found");
                         response.end();
+                        console.log(err);
                         return;
                     }
                     if(stats.isFile()){
                         response.writeHead(200);
                         fs.createReadStream("./www"+pathname+"/index.html").pipe(response);
-                    }else{
-                        response.writeHead(200);
-                        response.write("404 Page Not Found");
-                        response.end();
                     }
                 });
-            }else{
-                response.writeHead(200);
-                response.write("404 Page Not Found");
-                response.end();
             }
         });
     }
