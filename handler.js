@@ -40,6 +40,6 @@ function chat(response, postData){
     
 };
 
-exports["/"] = start;
-exports["start"] = start;
+//exports["/"] = start;
+//exports["start"] = start;
 exports["/chatroom/chat"] = chat;
