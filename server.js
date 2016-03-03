@@ -17,7 +17,7 @@ var start = function(route, handle){
         }else{
             route(pathname, handle,response);
         }
-    }).listen(8080);
+    }).listen(80);
 };
 
 exports.start = start;

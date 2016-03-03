@@ -1,0 +1,10 @@
+{
+    "name" : "chartoom",
+    "version" : "0.0.1",
+    "description": "a chartoom",
+    "dependencies": {
+        "socket.io": "*",
+        "mime": "*",
+        "mysql": "*"
+    }
+}

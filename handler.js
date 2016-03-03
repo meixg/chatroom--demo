@@ -8,7 +8,7 @@ function chat(response, postData){
     var conn = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'mxg102030',
+        password: '',
         database: 'chat',
         port: 3306
     });
@@ -29,7 +29,7 @@ function chat(response, postData){
             console.log(err);
         }else{
             for(var i = 0; i<rows.length; i++){
-                arr[i] = {"user" : rows[i].user, "msg" : rows[i].msg};
+                arr[i] = {"user" : rows[i].usr, "msg" : rows[i].msg};
             }
             var content = JSON.stringify(arr);
             response.write(content);
