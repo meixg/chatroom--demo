@@ -12,10 +12,10 @@ var route = function(pathname, handle, response, postData){
         response.write('Error 404: Page Not Found');
         response.end();
     }
-    //function sendFile(response, filePath, FileContents){
-    //    response.writeHead(200, {'Content-Type' : mime.lookup(path.basename(filePath))});
-    //    response.end(FileContents);
-    //}
+    function sendFile(response, filePath){
+        response.writeHead(200, {'Content-Type' : mime.lookup(path.basename(filePath))});
+        fs.createReadStream("./www"+filePath).pipe(response);
+    }
     fs.stat("./www" + pathname,function(err, stats){
         if(err){
             send404(response);
@@ -23,8 +23,7 @@ var route = function(pathname, handle, response, postData){
             return;
         }
         if(stats.isFile()){
-            response.writeHead(200);
-            fs.createReadStream("./www" + pathname).pipe(response);
+            sendFile(response, pathname);
             return;
         }
         if(stats.isDirectory()){
@@ -40,8 +39,7 @@ var route = function(pathname, handle, response, postData){
                     return;
                 }
                 if(stats.isFile()){
-                    response.writeHead(200);
-                    fs.createReadStream("./www"+pathname+"/index.html").pipe(response);
+                    sendFile(response, pathname+"/index.html");
                     return;
                 }
             });
